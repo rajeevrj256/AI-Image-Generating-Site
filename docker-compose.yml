@@ -1,0 +1,30 @@
+
+
+services:
+  backend:
+    build:
+      context: ./Server  # Path to your backend directory
+    ports:
+      - "5000:5000"        # Map container port 5000 to host port 5000
+    environment:
+      - MONGODB_URI=mongodb+srv://sorajeev5918:jACxGOJLxTgQxBcO@cluster0.8meqk.mongodb.net/  # Replace with your credentials and database
+    depends_on:
+      - mongo              # Ensure MongoDB starts before the backend
+
+  frontend:
+    build:
+      context: ./Client  # Path to your frontend directory
+    ports:
+      - "5173:5173"           
+    depends_on:
+      - backend            # Ensure the backend starts before the frontend
+
+  mongo:
+    image: mongo:latest    # Use the latest MongoDB image
+    ports:
+      - "27017:27017"      # Map container port 27017 to host port 27017
+    volumes:
+      - mongo_data:/data/db  # Persist MongoDB data
+
+volumes:
+  mongo_data:              # Define a named volume for MongoDB data persistence
