@@ -7,7 +7,7 @@ services:
     ports:
       - "5000:5000"        # Map container port 5000 to host port 5000
     environment:
-      - MONGODB_URI=mongodb+srv://sorajeev5918:jACxGOJLxTgQxBcO@cluster0.8meqk.mongodb.net/  # Replace with your credentials and database
+      - MONGODB_URI=mongodb+srv://sorajeb.net/  # Replace with your credentials and database
     depends_on:
       - mongo              # Ensure MongoDB starts before the backend
 
